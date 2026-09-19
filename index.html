@@ -1713,33 +1713,45 @@
     <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
       <div class="bg-primary text-white p-4 flex justify-between"><h3 class="text-xl font-bold"><i class="fas fa-file-excel mr-2"></i>Import Calibration Register from Excel</h3><button data-close><i class="fas fa-times"></i></button></div>
       <div class="p-5 overflow-auto space-y-3">
-        <p class="text-xs text-gray-500">Expected columns (any order, header names are matched loosely): Certificate No., Dept., Instrument, Manuf., Model, S.N, Code, Location, Cal.range, AcceptanceLimits, interval, Cal.Date, Due Date, Month-Year. Each row becomes a new <b>Draft</b> Calibration record that still goes through the normal Section Head / QA Manager review before it is Completed.</p>
-        <input id="calImportFileInput" type="file" accept=".xlsx,.xls,.csv" class="w-full p-2 border rounded text-sm">
-        <div id="calImportPreview" class="text-sm"></div>
+        <p class="text-xs text-gray-500">Expected columns (any order, header names are matched loosely): Certificate No., Dept., Instrument, Manufacturer, Model, Serial Number, Code, Location, Cal. Range, Acceptance Limits, Interval, Cal. Date, Due Date, Month-Year.</p>
+        <div>
+          <label class="block text-sm font-medium mb-1">Select Excel / CSV File *</label>
+          <input id="calImportFileInput" type="file" class="w-full p-2 border rounded text-sm" accept=".xlsx,.xls,.csv">
+        </div>
+        <div id="calImportPreview" class="mt-3"></div>
       </div>
-      <div class="bg-gray-50 px-5 py-3 flex justify-end gap-3 border-t">
-        <button type="button" data-close class="px-4 py-2 bg-gray-200 rounded">Cancel</button>
-        <button type="button" id="calImportConfirmBtn" class="hidden px-4 py-2 bg-accent text-white rounded font-semibold">Import Records</button>
+      <div class="p-4 bg-gray-50 border-t flex justify-end gap-3">
+        <button type="button" data-close class="px-4 py-2 bg-gray-200 rounded text-sm font-semibold">Cancel</button>
+        <button id="calImportConfirmBtn" type="button" class="hidden px-4 py-2 bg-primary text-white rounded text-sm font-semibold">Import Records as Draft</button>
       </div>
-    </div>
-  </div>
-
-  <!-- Confirm Modal -->
-  <div id="confirmModal" class="modal fixed inset-0 bg-gray-900/60 z-[60] items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
-      <div class="p-6"><h3 id="confirmTitle" class="text-xl font-bold">Confirm Action</h3><p id="confirmText" class="text-gray-600 py-4"></p><div id="reasonWrap" class="hidden"><label id="reasonLabel" class="block text-sm font-medium mb-1">Reason *</label><textarea id="reasonInput" rows="4" class="w-full p-2 border rounded"></textarea></div></div>
-      <div class="bg-gray-50 px-6 py-3 flex justify-end gap-3"><button data-close class="px-4 py-2 bg-gray-200 rounded">Cancel</button><button id="acceptConfirmBtn" class="px-4 py-2 bg-primary text-white rounded">Yes, Proceed</button></div>
     </div>
   </div>
 
   <!-- Message Modal -->
-  <div id="messageModal" class="modal fixed inset-0 bg-gray-900/60 z-[70] items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-xl w-full max-w-sm text-center">
-      <div id="messageIcon" class="pt-6"></div>
-      <h3 id="messageTitle" class="text-xl font-bold px-6 pt-2">Information</h3>
-      <p id="messageText" class="text-gray-600 px-6 py-4"></p>
-      <button data-close class="bg-primary text-white font-bold py-2 px-8 rounded-lg mb-5">OK</button>
+  <div id="messageModal" class="modal fixed inset-0 bg-gray-900/60 z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 text-center">
+      <div id="messageIcon" class="mb-4"></div>
+      <h3 id="messageTitle" class="text-lg font-bold mb-2">Notification</h3>
+      <p id="messageText" class="text-sm text-gray-600 mb-6"></p>
+      <button data-close class="w-full bg-primary text-white py-2 rounded-lg font-semibold">OK</button>
     </div>
   </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="modal fixed inset-0 bg-gray-900/60 z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
+      <h3 id="confirmTitle" class="text-lg font-bold mb-2">Confirm Action</h3>
+      <p id="confirmText" class="text-sm text-gray-600 mb-4"></p>
+      <div id="reasonWrap" class="mb-4 hidden">
+        <label id="reasonLabel" class="block text-xs font-semibold uppercase text-gray-500 mb-1">Reason / comment *</label>
+        <textarea id="reasonInput" rows="3" class="w-full p-2 border rounded text-sm" placeholder="Enter reason or comments..."></textarea>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button type="button" data-close class="px-4 py-2 bg-gray-200 rounded text-sm font-semibold">Cancel</button>
+        <button id="acceptConfirmBtn" type="button" class="px-4 py-2 bg-primary text-white rounded text-sm font-semibold">Confirm</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
