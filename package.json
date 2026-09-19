@@ -1,0 +1,20 @@
+{
+  "name": "validapp-functions",
+  "description": "Secure backend for ValidApp's AI Assistant (Summary / Pre-Review / Suggest Review Comments). Never exposes the AI API key to the browser.",
+  "engines": { "node": "20" },
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "deploy": "firebase deploy --only functions:runAiAssistant",
+    "logs": "firebase functions:log --only runAiAssistant"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.8.0",
+    "xlsx": "^0.18.5"
+  },
+  "private": true
+}

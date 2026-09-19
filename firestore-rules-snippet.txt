@@ -1,0 +1,8 @@
+// Optional addition to your existing firestore.rules.
+// Only needed if your ruleset does NOT already end with an implicit/explicit
+// deny for anything not matched. The Cloud Function writes this collection
+// via the Admin SDK, which is not subject to these rules at all.
+
+match /artifacts/{appId}/public/data/aiRateLimits/{uid} {
+  allow read, write: if false; // server (Admin SDK) only - never client-writable or client-readable
+}
